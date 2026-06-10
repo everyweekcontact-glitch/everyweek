@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Every Week — International Trade & Services</title>
+  <meta name="description" content="Every Week LLC: international trade services — imports, exports, supplier sourcing, customs, logistics and more. Bilingual site (EN/ES)." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="every-week-logo.png">
+  <style>
+    :root{
+      --bg:#0b1520;
+      --text:#0b1520;
+      --muted:#4b5563;
+      --surface:#ffffff;
+      --accent:#2dd4bf;
+      --accent-2:#6366f1;
+      --ring:rgba(0,0,0,.08);
+      --shadow:0 14px 40px rgba(2,6,23,.15);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1520;
+        --text:#e5eaf0;
+        --muted:#9aa7b6;
+        --surface:#0f1722;
+        --accent:#22d3ee;
+        --accent-2:#a78bfa;
+        --ring:rgba(255,255,255,.12);
+        --shadow:0 18px 60px rgba(0,0,0,.55);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(160deg,#f7fafc, #eef2f7 45%, #e9f7ff) fixed;
+      background-color:#f7fafc;
+    }
+    @media (prefers-color-scheme: dark){
+      body{background:radial-gradient(1200px 800px at 10% -10%, #132033 0, transparent 60%), radial-gradient(1000px 800px at 110% -20%, #1c2a40 0, transparent 60%), #0b1520}
+    }
+    a{color:inherit}
+    .container{width:min(1180px,92vw);margin:0 auto}
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:saturate(1.2) blur(8px);
+      background:color-mix(in oklab, var(--surface) 70%, transparent);
+      border-bottom:1px solid var(--ring);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;font-weight:800;letter-spacing:.08em}
+    .brand img{width:36px;height:36px;border-radius:50%;background:#0f141a}
+    .menu{display:flex;gap:1rem;align-items:center}
+    .menu a{font-weight:600;text-decoration:none;opacity:.9;padding:.4rem .6rem;border-radius:10px}
+    .menu a:hover{background:color-mix(in oklab, var(--accent), transparent 90%)}
+    .lang{display:flex;align-items:center;gap:.45rem}
+    select{appearance:none;border:1px solid var(--ring);background:var(--surface);color:var(--text);padding:.5rem .8rem;border-radius:10px;box-shadow:var(--shadow)}
+    /* HERO */
+    .hero{position:relative;overflow:hidden}
+    .hero .split{
+      display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(1rem,4vw,3rem);align-items:center;
+      padding:clamp(2rem,6vw,5rem) 0;
+    }
+    .hero h1{margin:0 0 .5rem;font-size:clamp(2rem,5vw,3.4rem);line-height:1.1}
+    .kicker{font-size:.9rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;color:var(--accent-2)}
+    .hero p{color:var(--muted);font-size:clamp(1rem,2vw,1.125rem);max-width:65ch}
+    .actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem}
+    .btn{
+      --bg:var(--surface);--fg:var(--text);
+      border:1px solid var(--ring);background:var(--bg);color:var(--fg);
+      background:var(--surface);padding:.9rem 1.1rem;border-radius:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s ease, filter .25s ease, background .2s ease
+    }
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.03)}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;border-color:transparent}
+    .mock{
+      border:1px solid var(--ring);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);position:relative
+    }
+    .mock img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;filter:grayscale(30%) saturate(90%);}
+    .mock::after{
+      content:"";position:absolute;inset:auto 10% 10% auto;width:120px;height:120px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--accent), transparent 30%), transparent 70%);
+      pointer-events:none;
+    }
+    /* SECTION */
+    section{padding:clamp(2.2rem,5vw,4.6rem) 0}
+    .title{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+    .title h2{margin:0;font-size:clamp(1.6rem,3.6vw,2.2rem)}
+    .lead{color:var(--muted);max-width:75ch}
+    /* SERVICES */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .card{grid-column:span 4;background:var(--surface);border:1px solid var(--ring);border-radius:18px;padding:1.2rem;transition:transform .2s ease, box-shadow .2s ease;border-left:4px solid color-mix(in oklab, var(--accent), transparent 70%)}
+    .card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.15)}
+    .card h3{margin:.35rem 0 .35rem}
+    .card p{color:var(--muted)}
+    .chipset{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+    .chip{border:1px solid var(--ring);padding:.45rem .7rem;border-radius:999px;font-weight:600;background:color-mix(in oklab, var(--accent), transparent 92%)}
+    /* METHOD */
+    .steps .step{grid-column:span 3;border:1px dashed var(--ring);border-radius:16px;padding:1rem;background:color-mix(in oklab, var(--surface), transparent 0%)}
+    .steps .step strong{display:block;margin-bottom:.25rem}
+    /* GALLERY/INDUSTRIES */
+    .tiles .tile{grid-column:span 4;border-radius:16px;overflow:hidden;border:1px solid var(--ring);background:var(--surface)}
+    .tile img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;filter:grayscale(40%);transition:filter .35s ease, transform .35s ease}
+    .tile:hover img{filter:grayscale(0%);transform:scale(1.03)}
+    .tile .caption{padding:.6rem .8rem;font-weight:700}
+    /* CTA & FOOTER */
+    .cta{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;border:1px dashed var(--ring);border-radius:16px;padding:1.1rem;background:color-mix(in oklab, var(--surface), transparent 0%)}
+    footer{border-top:1px solid var(--ring);padding:2rem 0 3rem;color:var(--muted)}
+    .footlinks a{text-decoration:none;margin-right:1rem}
+    /* RESPONSIVE */
+    @media (max-width:980px){
+      .hero .split{grid-template-columns:1fr}
+      .card{grid-column:span 6}
+      .steps .step{grid-column:span 6}
+      .tiles .tile{grid-column:span 6}
+    }
+    @media (max-width:640px){
+      .card,.steps .step,.tiles .tile{grid-column:span 12}
+      .menu a{display:none}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="Every Week – home">
+        <img src="every-week-logo.png" alt="Every Week logo">
+        <span>EVERY WEEK</span>
+      </a>
+      <nav class="menu">
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#method" data-i18n="nav_method">Method</a>
+        <a href="#industries" data-i18n="nav_industries">Industries</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#contact" id="contact-link" data-i18n="nav_contact">Contact</a>
+      </nav>
+      <div class="lang">
+        <label for="lang" style="font-weight:700">🌐</label>
+        <select id="lang" aria-label="Language selector">
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container split">
+        <div>
+          <div class="kicker" data-i18n="hero_kicker">International Trade Services</div>
+          <h1 data-i18n="hero_title">Build reliable trade operations, one week at a time.</h1>
+          <p data-i18n="hero_copy">
+            We help companies import, export and expand with clear processes, tidy documentation and a steady communication rhythm. Our work is practical: simple rules, honest metrics and brief notes everyone can follow.
+          </p>
+          <div class="actions">
+            <a class="btn primary" href="#services" data-i18n="btn_view_services">View services</a>
+            <a class="btn" href="#contact" data-i18n="btn_contact">Start a conversation</a>
+          </div>
+          <div class="chipset" aria-hidden="true">
+            <span class="chip">Incoterms</span>
+            <span class="chip">Customs</span>
+            <span class="chip">Quality</span>
+            <span class="chip">Finance</span>
+            <span class="chip">Compliance</span>
+          </div>
+        </div>
+        <div class="mock" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1712578585453-5c66c7a2080d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Container ship at port">
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="title">
+          <h2 data-i18n="svc_title">Services</h2>
+        </div>
+        <p class="lead" data-i18n="svc_lead">
+          We focus on international trade operations with a practical scope. Each service comes with a short checklist, a responsible owner and a weekly follow‑up so information keeps moving.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3 data-i18n="svc_1_t">Imports</h3>
+            <p data-i18n="svc_1_d">End‑to‑end coordination for purchase orders, supplier communication, documentation and delivery to your warehouse.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_2_t">Exports</h3>
+            <p data-i18n="svc_2_d">Commercial and operational support to ship products abroad with the right terms, packing and paperwork.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_3_t">Supplier Sourcing & Vetting</h3>
+            <p data-i18n="svc_3_d">We locate manufacturers, compare quotations, check references and pre‑screen quality to reduce trial‑and‑error.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_4_t">Customs & Brokerage Liaison</h3>
+            <p data-i18n="svc_4_d">We coordinate with your broker, prepare required documents and keep an audit trail for each shipment.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_5_t">Incoterms & Freight Advisory</h3>
+            <p data-i18n="svc_5_d">Door‑to‑door analysis of routes, modes and responsibilities. Clear recommendations in one page.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_6_t">Trade Finance Coordination</h3>
+            <p data-i18n="svc_6_d">Support with letters of credit, advance payments, escrow and milestone‑based schedules with simple checks.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_7_t">Quality Control & Factory Audits</h3>
+            <p data-i18n="svc_7_d">Checklists for pre‑production, in‑line and pre‑shipment inspections. Photo reports that are quick to review.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_8_t">Market Entry Research</h3>
+            <p data-i18n="svc_8_d">Light research: channels, competitors, landed costs and regulatory signals so you can size opportunities.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_9_t">B2B Matchmaking & Representation</h3>
+            <p data-i18n="svc_9_d">We open conversations, schedule demos and represent your company in fairs or online meetings.</p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="svc_10_t">After‑sales & Warranty Logistics</h3>
+            <p data-i18n="svc_10_d">We coordinate replacements, returns and technical follow‑ups with clear SLAs and traceable communication.</p>
+          </article>
+        </div>
+
+        <div class="cta" style="margin-top:1.6rem">
+          <p data-i18n="svc_cta_text"><strong>Need something specific?</strong> Tell us what you are trying to do and we’ll propose a small, testable first step.</p>
+          <a class="btn primary" href="#contact" data-i18n="svc_cta_btn">Contact us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="method">
+      <div class="container">
+        <div class="title">
+          <h2 data-i18n="mtd_title">Method</h2>
+        </div>
+        <p class="lead" data-i18n="mtd_lead">
+          Our approach is simple: observe, define a few useful rules, and execute them every week. We prefer small, transparent systems that teams can maintain.
+        </p>
+        <div class="grid steps" style="margin-top:1rem">
+          <div class="step"><strong data-i18n="mtd_1_t">1 · Discovery</strong> <span data-i18n="mtd_1_d">Context, goals and constraints. We map current process and responsibilities.</span></div>
+          <div class="step"><strong data-i18n="mtd_2_t">2 · Rules</strong> <span data-i18n="mtd_2_d">Definitions, thresholds and templates. Everyone knows who does what and when.</span></div>
+          <div class="step"><strong data-i18n="mtd_3_t">3 · Tools</strong> <span data-i18n="mtd_3_d">We adapt to your stack. Docs, sheets and trackers live together and stay searchable.</span></div>
+          <div class="step"><strong data-i18n="mtd_4_t">4 · Cadence</strong> <span data-i18n="mtd_4_d">Weekly checkpoints with short notes and honest metrics. Progress compounds.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INDUSTRIES / GALLERY -->
+    <section id="industries">
+      <div class="container">
+        <div class="title">
+          <h2 data-i18n="ind_title">Industries we often support</h2>
+        </div>
+        <p class="lead" data-i18n="ind_lead">We work across sectors. Below are typical examples—we confirm requirements before each engagement.</p>
+        <div class="grid tiles" style="margin-top:1rem">
+          <figure class="tile">
+            <img src="https://images.unsplash.com/photo-1647427060118-4911c9821b82?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Industrial manufacturing">
+            <figcaption class="caption" data-i18n="ind_1">Manufacturing</figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://images.unsplash.com/photo-1532186773960-85649e5cb70b?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Consumer electronics on a desk">
+            <figcaption class="caption" data-i18n="ind_2">Electronics</figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://images.unsplash.com/photo-1677774884290-24fd51a8c9ee?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Healthcare products">
+            <figcaption class="caption" data-i18n="ind_3">Healthcare & Aids</figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://images.unsplash.com/photo-1638135724311-ffe2560001dc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Apparel warehouse">
+            <figcaption class="caption" data-i18n="ind_4">Apparel & Textiles</figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://images.unsplash.com/photo-1621955050136-8e1cd6ed72e9?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Packaging line">
+            <figcaption class="caption" data-i18n="ind_5">Packaging</figcaption>
+          </figure>
+          <figure class="tile">
+            <img src="https://images.unsplash.com/photo-1656075005522-3f7695e35db3?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Agriculture landscape">
+            <figcaption class="caption" data-i18n="ind_6">Agro & Food</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="title"><h2 data-i18n="faq_title">Frequently Asked Questions</h2></div>
+        <div class="grid" style="grid-template-columns:repeat(12,1fr);gap:1rem">
+          <details class="card" style="grid-column:span 6">
+            <summary data-i18n="q1_t">Do you give investment advice?</summary>
+            <p data-i18n="q1_d">No. We provide operational support and information. Any financial decision should be evaluated independently considering applicable risks.</p>
+          </details>
+          <details class="card" style="grid-column:span 6">
+            <summary data-i18n="q2_t">How do we start?</summary>
+            <p data-i18n="q2_d">We book a short call to understand your case, then suggest a small, low‑risk first step. If it works, we scale gradually.</p>
+          </details>
+          <details class="card" style="grid-column:span 6">
+            <summary data-i18n="q3_t">What tools do you use?</summary>
+            <p data-i18n="q3_d">Usually the ones you already have: documents, spreadsheets, shared drives and simple trackers. Maintainability beats novelty.</p>
+          </details>
+          <details class="card" style="grid-column:span 6">
+            <summary data-i18n="q4_t">Can you join our meetings?</summary>
+            <p data-i18n="q4_d">Yes. We can participate in supplier calls, logistics reviews or internal check‑ins as observers or facilitators.</p>
+          </details>
+        </div>
+
+        <div class="cta" id="contact">
+          <p data-i18n="cta_text"><strong>Prefer email?</strong> Send us a note and we’ll reply with next steps.</p>
+          <a class="btn" href="#contact-form" data-i18n="cta_btn">Open contact form</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact-form">
+      <div class="container">
+        <div class="title">
+          <h2 data-i18n="form_title">Contact</h2>
+        </div>
+        <form action="https://formsubmit.co/everyweek.contact@gmail.com" method="POST" class="grid" style="grid-template-columns:repeat(12,1fr);gap:1rem">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="New message from Every Week">
+          <input type="hidden" name="_template" value="table">
+          <label class="card" style="grid-column:span 6">
+            <span style="display:block;font-weight:700;margin-bottom:.35rem" data-i18n="form_name_l">Name</span>
+            <input name="name" type="text" placeholder="Your name" required style="width:100%;padding:.8rem 1rem;border-radius:12px;border:1px solid var(--ring)">
+          </label>
+          <label class="card" style="grid-column:span 6">
+            <span style="display:block;font-weight:700;margin-bottom:.35rem" data-i18n="form_email_l">Email</span>
+            <input name="email" type="email" placeholder="you@email.com" required style="width:100%;padding:.8rem 1rem;border-radius:12px;border:1px solid var(--ring)">
+          </label>
+          <label class="card" style="grid-column:span 12">
+            <span style="display:block;font-weight:700;margin-bottom:.35rem" data-i18n="form_msg_l">Message</span>
+            <textarea name="message" placeholder="How can we help?" required style="width:100%;min-height:130px;padding:.9rem 1rem;border-radius:12px;border:1px solid var(--ring);resize:vertical"></textarea>
+          </label>
+          <div style="grid-column:span 12;display:flex;gap:.7rem;justify-content:flex-end">
+            <button class="btn" type="reset" data-i18n="form_reset">Clear</button>
+            <button class="btn primary" type="submit" data-i18n="form_send">Send</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;align-items:center;gap:.7rem;margin-bottom:1rem">
+        <img src="every-week-logo.png" alt="Every Week logo" style="width:28px;height:28px;border-radius:50%;background:#0f141a">
+        <strong>Every Week LLC</strong>
+      </div>
+      <p class="lead" style="font-size:.95rem" data-i18n="disclaimer">
+        Disclaimer: The information on this website is for informational purposes only and does not constitute financial, investment, legal or tax advice. No performance is promised and no results are guaranteed.
+      </p>
+      <div class="footlinks" style="margin-top:.5rem">
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#method" data-i18n="nav_method">Method</a>
+        <a href="#industries" data-i18n="nav_industries">Industries</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#contact-form" data-i18n="nav_contact">Contact</a>
+      </div>
+      <p style="margin-top:1rem;font-size:.9rem;color:var(--muted)">© <span id="year"></span> Every Week LLC</p>
+    </div>
+  </footer>
+
+  <script>
+    // --- i18n dictionary ---
+    const I18N = {
+      en: {
+        nav_services: "Services",
+        nav_method: "Method",
+        nav_industries: "Industries",
+        nav_faq: "FAQ",
+        nav_contact: "Contact",
+        hero_kicker: "International Trade Services",
+        hero_title: "Build reliable trade operations, one week at a time.",
+        hero_copy: "We help companies import, export and expand with clear processes, tidy documentation and a steady communication rhythm. Our work is practical: simple rules, honest metrics and brief notes everyone can follow.",
+        btn_view_services: "View services",
+        btn_contact: "Start a conversation",
+        svc_title: "Services",
+        svc_lead: "We focus on international trade operations with a practical scope. Each service comes with a short checklist, a responsible owner and a weekly follow‑up so information keeps moving.",
+        svc_1_t: "Imports",
+        svc_1_d: "End‑to‑end coordination for purchase orders, supplier communication, documentation and delivery to your warehouse.",
+        svc_2_t: "Exports",
+        svc_2_d: "Commercial and operational support to ship products abroad with the right terms, packing and paperwork.",
+        svc_3_t: "Supplier Sourcing & Vetting",
+        svc_3_d: "We locate manufacturers, compare quotations, check references and pre‑screen quality to reduce trial‑and‑error.",
+        svc_4_t: "Customs & Brokerage Liaison",
+        svc_4_d: "We coordinate with your broker, prepare required documents and keep an audit trail for each shipment.",
+        svc_5_t: "Incoterms & Freight Advisory",
+        svc_5_d: "Door‑to‑door analysis of routes, modes and responsibilities. Clear recommendations in one page.",
+        svc_6_t: "Trade Finance Coordination",
+        svc_6_d: "Support with letters of credit, advance payments, escrow and milestone‑based schedules with simple checks.",
+        svc_7_t: "Quality Control & Factory Audits",
+        svc_7_d: "Checklists for pre‑production, in‑line and pre‑shipment inspections. Photo reports that are quick to review.",
+        svc_8_t: "Market Entry Research",
+        svc_8_d: "Light research: channels, competitors, landed costs and regulatory signals so you can size opportunities.",
+        svc_9_t: "B2B Matchmaking & Representation",
+        svc_9_d: "We open conversations, schedule demos and represent your company in fairs or online meetings.",
+        svc_10_t: "After‑sales & Warranty Logistics",
+        svc_10_d: "We coordinate replacements, returns and technical follow‑ups with clear SLAs and traceable communication.",
+        svc_cta_text: "Need something specific? Tell us what you are trying to do and we’ll propose a small, testable first step.",
+        svc_cta_btn: "Contact us",
+        mtd_title: "Method",
+        mtd_lead: "Our approach is simple: observe, define a few useful rules, and execute them every week. We prefer small, transparent systems that teams can maintain.",
+        mtd_1_t: "1 · Discovery", mtd_1_d: "Context, goals and constraints. We map current process and responsibilities.",
+        mtd_2_t: "2 · Rules", mtd_2_d: "Definitions, thresholds and templates. Everyone knows who does what and when.",
+        mtd_3_t: "3 · Tools", mtd_3_d: "We adapt to your stack. Docs, sheets and trackers live together and stay searchable.",
+        mtd_4_t: "4 · Cadence", mtd_4_d: "Weekly checkpoints with short notes and honest metrics. Progress compounds.",
+        ind_title: "Industries we often support",
+        ind_lead: "We work across sectors. Below are typical examples—we confirm requirements before each engagement.",
+        ind_1: "Manufacturing", ind_2:"Electronics", ind_3:"Healthcare & Aids", ind_4:"Apparel & Textiles", ind_5:"Packaging", ind_6:"Agro & Food",
+        faq_title: "Frequently Asked Questions",
+        q1_t:"Do you give investment advice?", q1_d:"No. We provide operational support and information. Any financial decision should be evaluated independently considering applicable risks.",
+        q2_t:"How do we start?", q2_d:"We book a short call to understand your case, then suggest a small, low‑risk first step. If it works, we scale gradually.",
+        q3_t:"What tools do you use?", q3_d:"Usually the ones you already have: documents, spreadsheets, shared drives and simple trackers. Maintainability beats novelty.",
+        q4_t:"Can you join our meetings?", q4_d:"Yes. We can participate in supplier calls, logistics reviews or internal check‑ins as observers or facilitators.",
+        cta_text:"Prefer email? Send us a note and we’ll reply with next steps.",
+        cta_btn:"Open contact form",
+        form_title:"Contact",
+        form_name_l:"Name",
+        form_email_l:"Email",
+        form_msg_l:"Message",
+        form_reset:"Clear",
+        form_send:"Send",
+        disclaimer:"Disclaimer: The information on this website is for informational purposes only and does not constitute financial, investment, legal or tax advice. No performance is promised and no results are guaranteed."
+      },
+      es: {
+        nav_services: "Servicios",
+        nav_method: "Método",
+        nav_industries: "Industrias",
+        nav_faq: "Preguntas",
+        nav_contact: "Contacto",
+        hero_kicker: "Servicios de Comercio Internacional",
+        hero_title: "Operaciones de comercio confiables, semana a semana.",
+        hero_copy: "Acompañamos a empresas a importar, exportar y crecer con procesos claros, documentación prolija y un ritmo de comunicación constante. Trabajamos lo práctico: reglas simples, métricas honestas y notas breves que cualquiera puede seguir.",
+        btn_view_services: "Ver servicios",
+        btn_contact: "Iniciar una conversación",
+        svc_title: "Servicios",
+        svc_lead: "Nos enfocamos en la operación de comercio internacional con un alcance práctico. Cada servicio incluye un checklist breve, un responsable y un seguimiento semanal para que la información fluya.",
+        svc_1_t: "Importaciones",
+        svc_1_d: "Coordinación integral: órdenes de compra, comunicación con proveedores, documentación y entrega en tu depósito.",
+        svc_2_t: "Exportaciones",
+        svc_2_d: "Soporte comercial y operativo para enviar productos al exterior con los términos, embalaje y papeles adecuados.",
+        svc_3_t: "Búsqueda y Validación de Proveedores",
+        svc_3_d: "Localizamos fabricantes, comparamos cotizaciones, verificamos referencias y pre‑filtramos calidad para reducir prueba y error.",
+        svc_4_t: "Aduana & Gestoría",
+        svc_4_d: "Coordinamos con tu despachante, preparamos la documentación requerida y mantenemos trazabilidad por envío.",
+        svc_5_t: "Asesoría en Incoterms & Fletes",
+        svc_5_d: "Análisis puerta a puerta de rutas, modos y responsabilidades. Recomendaciones claras en una página.",
+        svc_6_t: "Coordinación de Finanzas del Comercio",
+        svc_6_d: "Soporte con cartas de crédito, anticipos, escrow y cronogramas por hitos con controles simples.",
+        svc_7_t: "Control de Calidad & Auditorías",
+        svc_7_d: "Listas de control para pre‑producción, en proceso y pre‑embarque. Reportes con fotos ágiles de leer.",
+        svc_8_t: "Investigación de Mercado de Entrada",
+        svc_8_d: "Investigación liviana: canales, competidores, costo puesto y normativa para dimensionar oportunidades.",
+        svc_9_t: "Vinculación B2B & Representación",
+        svc_9_d: "Abrimos conversaciones, organizamos demos y representamos a tu empresa en ferias o reuniones online.",
+        svc_10_t: "Logística de Postventa & Garantías",
+        svc_10_d: "Coordinamos reemplazos, devoluciones y seguimientos técnicos con SLAs claros y comunicación trazable.",
+        svc_cta_text: "¿Necesitás algo específico? Contanos qué querés lograr y proponemos un primer paso chico y medible.",
+        svc_cta_btn: "Contactanos",
+        mtd_title: "Método",
+        mtd_lead: "El enfoque es simple: observar, definir pocas reglas útiles y ejecutarlas todas las semanas. Preferimos sistemas chicos y transparentes que el equipo pueda mantener.",
+        mtd_1_t: "1 · Descubrimiento", mtd_1_d: "Contexto, objetivos y restricciones. Mapeamos proceso actual y responsabilidades.",
+        mtd_2_t: "2 · Reglas", mtd_2_d: "Definiciones, umbrales y plantillas. Todos saben quién hace qué y cuándo.",
+        mtd_3_t: "3 · Herramientas", mtd_3_d: "Nos adaptamos a tu stack. Documentos, planillas y tableros conviven y quedan buscables.",
+        mtd_4_t: "4 · Cadencia", mtd_4_d: "Revisiones semanales con notas breves y métricas honestas. El progreso se acumula.",
+        ind_title: "Industrias con las que trabajamos",
+        ind_lead: "Actuamos en distintos sectores. Estos son ejemplos típicos; confirmamos requisitos en cada caso.",
+        ind_1: "Manufactura", ind_2:"Electrónica", ind_3:"Salud & Ayudas Técnicas", ind_4:"Indumentaria & Textil", ind_5:"Packaging", ind_6:"Agro & Alimentos",
+        faq_title: "Preguntas Frecuentes",
+        q1_t:"¿Brindan asesoramiento de inversión?", q1_d:"No. Brindamos soporte operativo e información. Cualquier decisión financiera debe evaluarse de forma independiente considerando los riesgos.",
+        q2_t:"¿Cómo empezamos?", q2_d:"Agendamos una llamada breve para entender tu caso y proponemos un primer paso chico y de bajo riesgo. Si funciona, escalamos.",
+        q3_t:"¿Qué herramientas usan?", q3_d:"Generalmente las que ya tenés: documentos, planillas, drives compartidos y tableros simples. La mantenibilidad vale más que la novedad.",
+        q4_t:"¿Pueden sumarse a nuestras reuniones?", q4_d:"Sí. Podemos participar en llamadas con proveedores, revisiones logísticas o reuniones internas como observadores o facilitadores.",
+        cta_text:"¿Preferís por correo? Mandanos un mensaje y respondemos con próximos pasos.",
+        cta_btn:"Abrir formulario de contacto",
+        form_title:"Contacto",
+        form_name_l:"Nombre",
+        form_email_l:"Correo",
+        form_msg_l:"Mensaje",
+        form_reset:"Limpiar",
+        form_send:"Enviar",
+        disclaimer:"Aviso: La información de este sitio es exclusivamente informativa y no constituye asesoramiento financiero, de inversión, legal ni impositivo. No se prometen rendimientos ni se garantizan resultados."
+      }
+    };
+
+    function setLang(lang){
+      const dict = I18N[lang] || I18N.en;
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+      localStorage.setItem("ew_lang", lang);
+      document.documentElement.lang = lang === "es" ? "es" : "en";
+    }
+
+    const selector = document.getElementById("lang");
+    selector.addEventListener("change", e=> setLang(e.target.value));
+    const saved = localStorage.getItem("ew_lang") || (navigator.language||"en").startsWith("es") ? "es" : "en";
+    selector.value = saved;
+    setLang(saved);
+
+    // dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
